@@ -1,0 +1,223 @@
+#include <iostream>
+#include <cstdlib>
+#include <string>
+#include <fstream>
+#include <streambuf>
+#include <set>
+#include <cmath>
+#include <windows.h>
+
+using namespace std;
+
+//Функция проверки.
+int Cin(long min, long max) {
+	long a;
+	//Проверяем рациональность числа и ввод лишних символов 
+	while (!(cin >> a) || (cin.peek() != '\n')) {
+		cin.clear();
+		while (cin.get() != '\n');
+		cout << "Явно присутствуют некорректные для данного типа символы. Проверьте корректность." << endl;
+	}
+
+	//Исключение нуля
+	if (a == 0) {
+		cout << "Введите число отличное от нуля" << endl;
+		a = Cin(min, max);
+	}
+	//Верхний предел
+	if (a > max) {
+		cout << "Число выходит за промежуток. По условию a =< " << max << " и а >= " << min << endl;
+		a = Cin(min, max);
+	}
+	//Нижний Предел
+	if (a < min) {
+		cout << "Число выходит за промежуток. По условию a =< " << max << " и а >= " << min << endl;
+		a = Cin(min, max);
+	}
+	//Исключение отрицательных чисел
+	if (a < 0) {
+		cout << "Вы ввели (" << a << ") Возьмем все-таки положительное, то есть " << abs(a) << endl;
+		a = abs(a);
+	}
+
+	return a;
+}
+//Функция проверки, пропускающая ноль
+int CIN(long min, long max) {
+	long a;
+	//Проверяем рациональность числа и ввод лишних символов 
+	while (!(cin >> a) || (cin.peek() != '\n')) {
+		cin.clear();
+		while (cin.get() != '\n');
+		cout << "Явно присутствуют некорректные для данного типа символы. Проверьте корректность." << endl;
+	}
+
+	//Верхний предел
+	if (a > max) {
+		cout << "Число выходит за промежуток. По условию a =< " << max << " и а >= " << min << endl;
+		a = CIN(min, max);
+	}
+	//Нижний Предел
+	if (a < min) {
+		cout << "Число выходит за промежуток. По условию a =< " << max << " и а >= " << min << endl;
+		a = CIN(min, max);
+	}
+	//Исключение отрицательных чисел
+	if (a < 0) {
+		cout << "Вы ввели (" << a << ") Возьмем все-таки положительное, то есть " << abs(a) << endl;
+		a = abs(a);
+	}
+
+	return a;
+}
+//Функция проверки пропускающая ноль и отрицательные числа.
+int CIn(long min, long max) {
+	long a;
+	//Проверяем рациональность числа и ввод лишних символов 
+	while (!(cin >> a) || (cin.peek() != '\n')) {
+		cin.clear();
+		while (cin.get() != '\n');
+		cout << "Явно присутствуют некорректные для данного типа символы. Проверьте корректность." << endl;
+	}
+
+	//Верхний предел
+	if (a > max) {
+		cout << "Число выходит за промежуток. По условию a =< " << max << " и а >= " << min << endl;
+		a = CIn(min, max);
+	}
+	//Нижний Предел
+	if (a < min) {
+		cout << "Число выходит за промежуток. По условию a =< " << max << " и а >= " << min << endl;
+		a = CIn(min, max);
+	}
+
+	return a;
+}
+//Функция проверки, для дробных.
+long double CiN(long min, long max) {
+	long double a;
+	//Проверяем рациональность числа и ввод лишних символов 
+	while (!(cin >> a) || (cin.peek() != '\n')) {
+		cin.clear();
+		while (cin.get() != '\n');
+		cout << "Явно присутствуют некорректные для данного типа символы. Проверьте корректность." << endl;
+	}
+
+	//Исключение нуля
+	if (a == 0) {
+		cout << "Введите число отличное от нуля" << endl;
+		a = Cin(min, max);
+	}
+	//Верхний предел
+	if (a > max) {
+		cout << "Число выходит за промежуток. По условию a =< " << max << " и а >= " << min << endl;
+		a = Cin(min, max);
+	}
+	//Нижний Предел
+	if (a < min) {
+		cout << "Число выходит за промежуток. По условию a =< " << max << " и а >= " << min << endl;
+		a = Cin(min, max);
+	}
+	//Исключение отрицательных чисел
+	if (a < 0) {
+		cout << "Вы ввели (" << a << ") Возьмем все-таки положительное, то есть " << abs(a) << endl;
+		a = abs(a);
+	}
+
+	return a;
+}
+
+float wee1() {
+	cout << endl;
+	long double s, p, n;
+	cout << "S = "; s = CiN(INT_MIN, INT_MAX);
+	cout << "p = "; p = CiN(INT_MIN, 100);
+	cout << "n = "; n = CiN(1, INT_MAX);
+	if (pow(1 + p / 100, n) == 1) {
+		cout << "Деление на ноль. Проверьте корректность. " << endl;
+	}
+	else {
+		cout << "m = " << (s * (p / 100) * pow(1 + (p / 100), n)) / (12 * (pow(1 + (p / 100), n) - 1)) << endl;
+	}
+	return 0;
+}
+float wee2() {
+	cout << endl;
+	long double s, m, n;
+	cout << "Введите сумму заема(в рублях)\nS = "; s = CiN(INT_MIN, INT_MAX);
+	cout << "Введите количество лет(в годах)\nn = "; n = CiN(1, INT_MAX);
+	cout << "Введите месячную выплату(в рублях)\nm = "; m = CiN(INT_MIN, INT_MAX);
+	cout << "Процент равен " << ((pow(((m * 12 * n) / s), 1 / n) - 1) * 100) << endl;
+	return 0;
+}
+float wee3() {
+	cout << endl;
+
+	cout << ifstream("D:\\дз по ПП\\Домашнее задание 3\\Текстовый документ.txt").rdbuf() << endl;
+
+	return 0;
+}
+float wee4() {
+	cout << endl;
+	int b;
+	ifstream file("D:\\дз по ПП\\Домашнее задание 3\\Текстовый документ.txt");
+	string str((istreambuf_iterator<char>(file)), istreambuf_iterator<char>());
+	cout << str << endl;
+	cout << endl;
+	for (int i = 0; i < str.size(); i++) {
+		if (isdigit(str[i])) {
+			b = str[i] - '0';
+			cout << b << " ";
+		}
+	}
+	return 0;
+}
+float wee5() {
+	cout << endl; cin.clear(); cin.ignore();
+	multiset<char> str;
+	int n = 30; string s; char temp;
+	cout << "Вводите строку: "; getline(cin, s);
+	for (int i = s.length(); i >= 0; i--) {
+		str.insert(s[i]);
+	}
+	for (auto c : str) cout << c;
+	return 0;
+}
+int main() {
+	cout << endl; cin.clear();
+	SetConsoleOutputCP(1251);
+	SetConsoleCP(1251);
+	int s;
+	cout << "Третья неделя.\nВведите № задания:\n 1 - 'ЗАЕМ'\n 2 - 'ССУДА'\n 3 - 'КОПИРОВАНИЕ ФАЙЛА'\n 4 - 'ФИЛЬТР'\n 5 - 'СОРТИРОВКА БУКВ'\n 0 - Подняться на уровень выше\nНомер -  ";
+	s = CIN(0, 5);
+	switch (s) {
+	case 0:
+		break;
+	case 1:
+		wee1();
+		cout << endl; system("pause"); system("cls");
+		main();
+		break;
+	case 2:
+		wee2();
+		cout << endl; system("pause"); system("cls");
+		main();
+		break;
+	case 3:
+		wee3();
+		cout << endl; system("pause"); system("cls");
+		main();
+		break;
+	case 4:
+		wee4();
+		cout << endl; system("pause"); system("cls");
+		main();
+		break;
+	case 5:
+		wee5();
+		cout << endl; system("pause"); system("cls");
+		main();
+		break;
+	}
+	return 0;
+}
